@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"]
+}
