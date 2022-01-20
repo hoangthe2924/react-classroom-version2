@@ -15,6 +15,7 @@ import {
   uploadAssignmentFile,
   getListAssignment,
 } from "services/class.service";
+import Loading from "components/Loading";
 
 const color = {
   submitted: "success.main",
@@ -28,6 +29,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 export default function AssignmentTab({ items }) {
   const [file, setFile] = useState(null);
   const [list, setList] = useState([]);
+  const [open, setOpen] = useState(false);
   const [itemChosen, setItemChosen] = useState(null);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarContent, setSnackbarContent] = useState({
@@ -40,6 +42,7 @@ export default function AssignmentTab({ items }) {
   };
 
   const getListAssignments = async () => {
+    setOpen(true);
     try {
       const res = await getListAssignment(items.id);
       if (res.data) {
@@ -52,6 +55,7 @@ export default function AssignmentTab({ items }) {
       });
       setShowSnackbar(true);
     }
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -59,6 +63,7 @@ export default function AssignmentTab({ items }) {
   }, []);
 
   const uploadHandler = async (assignmentId) => {
+    setOpen(true);
     try {
       const res = await uploadAssignmentFile(assignmentId, file);
       setItemChosen(null);
@@ -68,6 +73,7 @@ export default function AssignmentTab({ items }) {
           content: "Upload file successfully!",
         });
         setShowSnackbar(true);
+        getListAssignments();
       }
     } catch (error) {
       setSnackbarContent({
@@ -76,11 +82,12 @@ export default function AssignmentTab({ items }) {
       });
       setShowSnackbar(true);
     }
+    setOpen(false);
   };
 
   return (
     <Box container sx={{ mx: "auto", width: "70%", maxWidth: "800px" }}>
-      {items.assignments.map((item, idx) => (
+      {list.map((item) => (
         <Accordion
           key={item.title+item.id}
           sx={{
@@ -102,7 +109,7 @@ export default function AssignmentTab({ items }) {
               }}
             >
               <Grid container alignItems="center">
-                <Avatar sx={{ backgroundColor: idx%2===0? color.submitted : color.notSubmitted }}>
+                <Avatar sx={{ backgroundColor: item.isDone? color.submitted : color.notSubmitted }}>
                   <AssignmentOutlinedIcon />
                 </Avatar>
                 <Typography
@@ -166,6 +173,7 @@ export default function AssignmentTab({ items }) {
           {snackbarContent.content}
         </Alert>
       </Snackbar>
+      <Loading open={open} />
     </Box>
   );
 }
