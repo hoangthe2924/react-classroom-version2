@@ -3,7 +3,11 @@ This repository is version 2 of my project in Advanced Web Development course. I
 
 ## Tutorial:
 
-### TO BUILD THE APP: `yarn build`
+### TO INSTALL THE DEPENDENCIES OF THE APP: `npm install`
+
+You need this command to install all required dependencies.
+
+### TO BUILD THE APP: `npm build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -14,7 +18,7 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-### TO START THE APP: `yarn start`
+### TO START THE APP: `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -22,13 +26,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### TO LAUNCH TEST MODE: `yarn test`
+### TO LAUNCH TEST MODE: `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 
-### TO REMOVE DEPENDENCY: `yarn eject`
+### TO REMOVE DEPENDENCY: `npm eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
