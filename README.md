@@ -1,5 +1,5 @@
 # Advanced Web Project: GoogleClassroom-like Web App
-
+This repository is version 2 of my project in Advanced Web Development course. In this version, we add Assignment Tab and allow student upload their assignments to host's drive.
 
 ## Tutorial:
 
