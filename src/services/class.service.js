@@ -22,13 +22,13 @@ export function checkClassAvailable(values) {
 }
 
 export function addNewAssignment(classId, values) {
-  return http.post(`/classes/${classId}/assignments`, values, {
+  return http.post(`/assignments`, {classID: classId, ...values}, {
     headers: authHeader(),
   });
 }
 
 export function getAssignment(classId) {
-  return http.get(`/classes/${classId}/assignments`, { headers: authHeader() });
+  return http.get(`/assignments?classID=${classId}`, { headers: authHeader() });
 }
 
 export function getStudentList(classId) {
@@ -42,19 +42,19 @@ export function updateStudentList(classId, values) {
 }
 
 export function updateAssignmentInfo(classId, values) {
-  return http.put(`/classes/${classId}/assignments`, values, {
+  return http.put(`/assignments`, {classID: classId, ...values}, {
     headers: authHeader(),
   });
 }
 
 export function updateAssignmentOrder(classId, values) {
-  return http.put(`/classes/${classId}/assignments/order`, values, {
+  return http.put(`/assignments/order`, {classID: classId, ...values}, {
     headers: authHeader(),
   });
 }
 
 export function deleteAssignment(classId, assignmentId) {
-  return http.delete(`/classes/${classId}/assignments/${assignmentId}`, {
+  return http.delete(`/assignments/${assignmentId}?classID=${classId}`, {
     headers: authHeader(),
   });
 }
@@ -62,3 +62,12 @@ export function deleteAssignment(classId, assignmentId) {
 export function invitePeople(listEmail, classID, role) {
   return http.post(`/classes/people/invite`,{listEmail, classID, role}, {headers: authHeader()});
 }
+
+export function uploadAssignmentFile(assignmentId, file) {
+  return http.post(`/assignments/${assignmentId}`,{file}, {headers: authHeader()});
+}
+
+export function getListAssignment(classId) {
+  return http.get(`/assignments?classId=${classId}`, {headers: authHeader()});
+}
+

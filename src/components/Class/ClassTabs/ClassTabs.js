@@ -9,6 +9,7 @@ import PeopleTab from "components/Class/ClassTabs/PeopleTab/PeopleTab";
 import GradeStructureTab from "components/Class/ClassTabs/GradeStructureTab/GradeStructureTab";
 import GradeBoard from "components/Class/ClassTabs/GradeBoardTab/GradeBoardTab";
 import GradeReviewTab from "./GradeReviewTab/GradeReviewTab";
+import AssignmentTab from "./GradeStructureTab/AssignmentTab";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,6 +67,7 @@ export default function BasicTabs(props) {
           <Tab label="People" {...a11yProps(1)} />
           <Tab label="Grades" {...a11yProps(2)} />
           {isTeacher && <Tab label="Grade Structure" {...a11yProps(3)} />}
+          {!isTeacher && <Tab label="Assignments" {...a11yProps(3)} />}
           {isTeacher && <Tab label="Grade Review" {...a11yProps(4)} />}
         </Tabs>
       </Box>
@@ -81,6 +83,11 @@ export default function BasicTabs(props) {
       {isTeacher && (
         <TabPanel value={value} index={3}>
           <GradeStructureTab items={props.item} onUpdate={props.onUpdate} />
+        </TabPanel>
+      )}
+      {!isTeacher && (
+        <TabPanel value={value} index={3}>
+          <AssignmentTab items={props.item} />
         </TabPanel>
       )}
       {isTeacher && (
