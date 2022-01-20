@@ -85,9 +85,15 @@ export default function StudentList({ ListAssignment }) {
         setIsSavingData(false);
       }
     }
-    assignments.forEach((assignment) => {
-      updateGradeAsync(assignment.id.toString(), body, params.id);
-    });
+    if (assignments.length === 0)
+    {
+      setIsSavingData(false);
+    }
+    else{
+      assignments.forEach((assignment) => {
+        updateGradeAsync(assignment.id.toString(), body, params.id);
+      });
+    }
   };
 
   const handleClose = (value) => {
