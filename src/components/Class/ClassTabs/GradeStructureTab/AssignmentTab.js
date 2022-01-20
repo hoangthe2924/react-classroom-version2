@@ -54,8 +54,6 @@ export default function AssignmentTab({ items }) {
     }
   };
 
-  console.log(file?.name);
-
   useEffect(() => {
     getListAssignments(items.id);
   }, []);
@@ -148,7 +146,7 @@ export default function AssignmentTab({ items }) {
                   </Button>
                 </label>
               </Box>
-              <Button variant="contained" color="primary" component="span" disabled={+itemChosen !== +item.id} onClick={uploadHandler}>
+              <Button variant="contained" color="primary" component="span" disabled={+itemChosen !== +item.id} onClick={uploadHandler.bind(null, item.id)}>
                 Gửi file
               </Button>
             </Box>

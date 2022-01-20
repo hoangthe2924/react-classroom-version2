@@ -64,10 +64,15 @@ export function invitePeople(listEmail, classID, role) {
 }
 
 export function uploadAssignmentFile(assignmentId, file) {
-  return http.post(`/assignments/${assignmentId}`,{file}, {headers: authHeader()});
+  const formData = new FormData();
+  formData.append('file',file);
+  const headers = {
+    "Content-Type": "multipart/form-data",
+  };
+  return http.post(`/assignments/${assignmentId}`,formData, {headers: {...authHeader(), ...headers}});
 }
 
 export function getListAssignment(classId) {
-  return http.get(`/assignments?classId=${classId}`, {headers: authHeader()});
+  return http.get(`/assignments/students?classId=${classId}`, {headers: authHeader()});
 }
 
