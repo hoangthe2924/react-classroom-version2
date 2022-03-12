@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "services/auth.service";
 
-export const DEFAULT_DOMAIN = "http://localhost:7000";
+export const DEFAULT_DOMAIN = "https://classrum-api-v2.herokuapp.com";
 
 const token = getToken();
 export default axios.create({
