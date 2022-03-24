@@ -113,7 +113,7 @@ export default function Notification() {
                   <MenuItem key={notification.id} onClick={handleClose}>
                     <Alert sx={{ width: "100%" }} severity="warning">
                       <AlertTitle sx={{ width: "100%" }}>
-                        Giáo viên {notification.fromUser.fullname} đã thực hiện
+                        Giáo viên {notification.fromUser?.fullname} đã thực hiện
                         công bố điểm.
                       </AlertTitle>
 
