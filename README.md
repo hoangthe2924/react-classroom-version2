@@ -1,6 +1,8 @@
 # Advanced Web Project: GoogleClassroom-like Web App
 This repository is version 2 of my project in Advanced Web Development course. You can see it [here](https://github.com/hoangthe2924/classroom). In this version, we add Assignment Tab and allow student upload their assignments to host's drive.
 
+Backend project (Node.js) link: [click here](https://github.com/hoangthe2924/api-classroom-version2)
+
 Demo link: [click here](https://react-classrum-v2.netlify.app/) (since it's a free hosting site, sometimes you cannot access the site for the first time)
 
 ## Tutorial:
